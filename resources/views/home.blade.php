@@ -1,23 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    @auth
+                        <div class="card-body">
+                            <h1>Hi, {{ Auth::user()->name }}</h1>
+                            <p>Your email is: {{ Auth::user()->email }}</p>
+                            <p>Your role is: {{ Auth::user()->role }}</p>
+                            <p>Your created at: {{ Auth::user()->created_at }}</p>
                         </div>
-                    @endif
 
-                    {{ __('You are logged in!') }}
+                    @endauth
+
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                        <a class="nav-link" href="{{ route('welcome') }}">jobs</a>
+                        <a class="nav-link" href="{{ route('welcome') }}">create company</a>
+                        <a class="nav-link" href="{{ route('welcome') }}">create jobs</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

@@ -15,16 +15,9 @@ return new class extends Migration
     public function up(): void
     {
 
-
-
-
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained('company');
-            $table->string('queue')->index();
-            $table->longText('payload');
-            $table->unsignedTinyInteger('attempts');
-            $table->unsignedInteger('reserved_at')->nullable();
+            $table->foreignId('company_id')->constrained('companies');
             $table->unsignedInteger('available_at');
             $table->unsignedInteger('created_at');
             $table->boolean('isactive');
@@ -39,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('vacancies');
     }
 };
