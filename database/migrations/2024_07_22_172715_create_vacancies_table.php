@@ -17,13 +17,13 @@ return new class extends Migration
 
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained('companies');
-            $table->unsignedInteger('available_at');
-            $table->unsignedInteger('created_at');
+            $table->foreignId('company_id')->constrained();
+            // $table->unsignedInteger('available_at');
+            $table->timestamps('created_at'); // timestamps
             $table->boolean('isactive');
             $table->boolean('is_resume_required');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->timestamps('start_date');
+            $table->timestamps('end_date');
         });
     }
 

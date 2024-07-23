@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('image-upload', [ImageController::class, 'index'])->name('image.index');
+Route::post('image-upload', [ImageController::class, 'store'])->name('image.store');
 
 // Route::get('/job/create', [JobController::class, 'create'])->name('job.create');
 // Route::post('/job', [JobController::class, 'store'])->name('job.store');

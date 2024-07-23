@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('vacancie_id')->constrained('vacancies');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('vacancy_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->string('status')->default('pending');
             $table->string('resume')->nullable();
             $table->timestamps();

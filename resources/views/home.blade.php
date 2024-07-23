@@ -26,6 +26,7 @@
                         <a class="nav-link" href="{{ route('welcome') }}">jobs</a>
                         <a class="nav-link" href="{{ route('welcome') }}">create company</a>
                         <a class="nav-link" href="{{ route('welcome') }}">create jobs</a>
+                        <a class="nav-link" href="{{ route('image.index') }}">image upload</a>
                     </div>
                 </div>
             </div>
