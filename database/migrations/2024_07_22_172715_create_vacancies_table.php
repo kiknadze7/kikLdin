@@ -1,6 +1,3 @@
-
-
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -14,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained();
-            // $table->unsignedInteger('available_at');
-            $table->timestamps('created_at'); // timestamps
-            $table->boolean('isactive');
-            $table->boolean('is_resume_required');
-            $table->timestamps('start_date');
-            $table->timestamps('end_date');
+            $table->foreignId('user_id')->constrained();
+            $table->string('title');
+            $table->text('description');
+            $table->boolean('isactive')->default(true);
+            $table->timestamp('start_date')->nullable();
+            $table->boolean('is_resume_required')->default(true);
+            $table->timestamp('end_date')->nullable();
+            $table->timestamps();
         });
     }
 

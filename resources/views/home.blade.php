@@ -15,6 +15,7 @@
                         </div>
 
                     @endauth
+                    <img src="{{ asset('storage/' . Auth::user()->company_logo) }}" alt="Company Logo">
 
                     <div class="card-body">
                         @if (session('status'))
