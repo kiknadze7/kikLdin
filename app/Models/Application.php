@@ -10,10 +10,19 @@ class Application extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'email',
-        'phone',
-        'job_id',
+        'vacancy_id',
+        'user_id',
+        'status',
         'resume',
     ];
+
+    public function vacancy()
+    {
+        return $this->belongsTo(Vacancy::class, 'vacancy_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

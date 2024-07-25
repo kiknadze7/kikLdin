@@ -1,24 +1,30 @@
 <?php
 
-use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\VacancionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [MainPageController::class, 'index'])->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('image-upload', [ImageController::class, 'index'])->name('image.index');
-Route::post('image-upload', [ImageController::class, 'store'])->name('image.store');
+Route::middleware('auth')->group(function () {
+    Route::get('/vacancion/create', [VacancionController::class, 'create'])->name('vacancion.create');
+    Route::post('/vacancion', [VacancionController::class, 'store'])->name('vacancion.store');
+    Route::put('/vacancion/{vacancion}', [VacancionController::class, 'update'])->name('vacancion.update');
+    Route::delete('/vacancion/{vacancion}', [VacancionController::class, 'destroy'])->name('vacancion.destroy');
+    Route::get('/vacancion/{vacancy}/edit', [VacancionController::class, 'edit'])->name('vacancion.edit');
+    Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
+    Route::get('/applications', [ApplicationController::class, 'index'])->name('applications.index');
+    Route::get('/applications/{application}', [ApplicationController::class, 'show'])->name('applications.show');
+});
 
-// Route::get('/job/create', [JobController::class, 'create'])->name('job.create');
-// Route::post('/job', [JobController::class, 'store'])->name('job.store');
-// Route::get('/job/{job}', [JobController::class, 'show'])->name('job.show');
-// Route::put('/job/{job}', [JobController::class, 'update'])->name('job.update');
-// Route::get('/job/{job}/edit', [JobController::class, 'edit'])->name('job.edit');
-// Route::delete('/job/{job}', [JobController::class, 'destroy'])->name('job.destroy');
+
+Route::get('/vacancion', [VacancionController::class, 'index'])->name('vacancion.index');
+Route::get('/vacancies/{vacancy}', [VacancionController::class, 'show'])->name('vacancion.show');
