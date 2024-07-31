@@ -49,9 +49,9 @@
                             <!-- Additional fields for other attributes -->
 
                             <div class="mb-3 form-check">
-                                <input id="isactive" type="checkbox" class="form-check-input" name="isactive"
-                                    {{ old('isactive', $vacancy->isactive) ? 'checked' : '' }}>
-                                <label for="isactive" class="form-check-label">Is Active</label>
+                                <input id="is_active" type="checkbox" class="form-check-input" name="is_active"
+                                    {{ old('is_active', $vacancy->is_active) ? 'checked' : '' }} value="true">
+                                <label for="is_active" class="form-check-label">Is Active</label>
                             </div>
 
 

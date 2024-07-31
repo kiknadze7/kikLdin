@@ -30,17 +30,17 @@ class VacancionController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'isactive' => 'boolean|nullable',
-            'start_date' => 'date',
+            'is_active' => 'boolean|nullable',
             'is_resume_required' => 'boolean|nullable',
+            'start_date' => 'date',
             'end_date' => 'date',
         ]);
-
+        //  // change model to Vacancy->create 
         $vacancion = new Vacancy();
         $vacancion->user_id = Auth::id(); // Get the authenticated user's ID
         $vacancion->title = $request->title;
         $vacancion->description = $request->description;
-        $vacancion->isactive = $request->isactive ?? true;
+        $vacancion->is_active = $request->is_active ?? true;
         $vacancion->start_date = $request->start_date;
         $vacancion->is_resume_required = $request->is_resume_required ?? true;
         $vacancion->end_date = $request->end_date;
@@ -71,15 +71,17 @@ class VacancionController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date',
+            'is_active' => 'nullable',
+            'is_resume_required' => 'nullable',
         ]);
 
 
+        // შეცვალე მოდელის Vacancy->update ით
         $vacancion->title = $request->title;
         $vacancion->description = $request->description;
-        $vacancion->isactive = $request->has('isactive');
+        $vacancion->is_active = $request->has('is_active');
         $vacancion->start_date = $request->start_date;
         $vacancion->is_resume_required = $request->has('is_resume_required');
         $vacancion->end_date = $request->end_date;
@@ -87,8 +89,6 @@ class VacancionController extends Controller
 
         return redirect()->route('welcome')->with('success', 'Vacancy updated successfully.');
     }
-
-
 
     public function destroy(Vacancy $vacancion)
     {

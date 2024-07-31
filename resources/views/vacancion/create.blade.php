@@ -69,12 +69,12 @@
 
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input type="hidden" name="isactive" value="0">
-                                    <input id="isactive" type="checkbox"
-                                        class="form-check-input @error('isactive') is-invalid @enderror" name="isactive"
-                                        value="1" {{ old('isactive', true) ? 'checked' : '' }}>
-                                    <label for="isactive" class="form-check-label">{{ __('Is Active') }}</label>
-                                    @error('isactive')
+                                    <input type="hidden" name="is_active" value="0">
+                                    <input id="is_active" type="checkbox"
+                                        class="form-check-input @error('is_active') is-invalid @enderror" name="is_active"
+                                        value="1" {{ old('is_active', true) ? 'checked' : '' }}>
+                                    <label for="is_active" class="form-check-label">{{ __('Is Active') }}</label>
+                                    @error('is_active')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('title');
+            $table->string('title')->index();
             $table->text('description');
-            $table->boolean('isactive')->default(true);
-            $table->timestamp('start_date')->nullable();
+            $table->boolean('is_active')->default(true); // მიტყეპებულია სიტყვები
             $table->boolean('is_resume_required')->default(true);
+            $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
             $table->timestamps();
         });

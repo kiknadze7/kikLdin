@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_company')->default(false);
+            $table->boolean('is_company')->default(false); // type: company or person
             $table->string('company_name')->nullable();
             $table->string('company_email')->nullable();
             $table->string('company_logo')->nullable();

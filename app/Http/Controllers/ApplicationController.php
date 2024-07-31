@@ -14,12 +14,10 @@ class ApplicationController extends Controller
         $user = Auth::user();
 
         if ($user->is_company) {
-
-            $applications = Application::whereHas('vacancy', function ($query) use ($user) {
+            $applications = Application::whereHas('vacancy', function ($query) use ($user) { // მოიძიე რას შვება ეს ლარაველის დოკუმეტაციაში
                 $query->where('user_id', $user->id);
             })->with('vacancy', 'user')->get();
         } else {
-
             $applications = Application::where('user_id', $user->id)->get();
         }
 

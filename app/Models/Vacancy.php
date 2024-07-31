@@ -15,7 +15,7 @@ class Vacancy extends Model
         'user_id',
         'title',
         'description',
-        'isactive',
+        'is_active',
         'start_date',
         'is_resume_required',
         'end_date',
@@ -24,7 +24,7 @@ class Vacancy extends Model
     protected $casts = [
         'start_date' => 'date',
         'end_date' => 'date',
-        'isactive' => 'boolean',
+        'is_active' => 'boolean',
         'is_resume_required' => 'boolean',
     ];
 

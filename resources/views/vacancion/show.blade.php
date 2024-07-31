@@ -17,7 +17,7 @@
                         </div>
                         <div class="mb-3">
                             <strong>Status:</strong>
-                            <p>{{ $vacancy->isactive ? 'Active' : 'Inactive' }}</p>
+                            <p>{{ $vacancy->is_active ? 'Active' : 'Inactive' }}</p>
                         </div>
                         <div class="mb-3">
                             <strong>Resume Required:</strong>
